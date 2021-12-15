@@ -1,53 +1,21 @@
-import {Component, StrictMode} from 'react';
 import './App.css';
 
-const Header = () => {
-	return <h2>Hello world!</h2>
-}
-
-//const Field = () => {
-//	const holder = 'Enter here'
-//	const styledField = {
-//		width: '300px',
-//		color: 'red'
-//	}
-//	return <input
-//		placeholder={holder}
-//		type="text"
-//		style={styledField} />
-//}
-
-class Field extends Component{
-	render() {
-		const holder = 'Enter here'
-		const styledField = {
-			width: '300px',
-			color: 'red'
-		}
-		return <input
-			placeholder={holder}
-			type="text"
-			style={styledField} />
-	}
-}
-
-function Btn() {
-	const text = 'Log in'
-	const logged = false;
-	return <button>{logged ? 'Enter': text}</button> 
+function WhoAmI({name, surname, link}) {
+	return (
+		<div>
+			<h1>Мое имя {name()}, фамилия - {surname}</h1>
+			<a href={link}>Мой профиль</a>
+		</div>
+	)
 }
 
 function App() {
   return (
-    <div className="App">
-		  <StrictMode>
-			  <Header />
-		  </StrictMode>
-		  <Field />
-		  <Btn />
+	  <div className="App">
+		  <WhoAmI name={()=> {return 'Александр'}} surname="Караулов" link="https://vk.com/id13598284" />
+		  <WhoAmI name={()=> {return 'Татьяна'}} link="https://vk.com/id38979581"/>
     </div>
   );
 }
 
-export {Header};
 export default App;
